@@ -3,7 +3,7 @@ const API_URL = import.meta.env.VITE_API_URL;
  export const getNotes = async () => {
   const token = localStorage.getItem("token");
 
-  const response = await fetch(API_URL, {
+  const response = await fetch(`${API_URL}/api/notes`, {
     method:"GET",
     headers: {
       Authorization: `Bearer ${token}`,
@@ -20,7 +20,7 @@ const API_URL = import.meta.env.VITE_API_URL;
 
 export const createNote= async(title,description)=>{
     const token= localStorage.getItem("token");
-    const response= await fetch(API_URL,
+    const response= await fetch(`${API_URL}/api/notes`,
     {
         method:"POST",
         headers:{
@@ -50,7 +50,7 @@ export const updateNote = async (
   const token = localStorage.getItem("token");
 
   const response = await fetch(
-    `${API_URL}/${noteId}`,
+    `${API_URL}/api/notes/${noteId}`,
     {
       method: "PUT",
 
@@ -78,7 +78,7 @@ export const deleteNote = async (noteId) => {
   const token = localStorage.getItem("token");
 
   const response = await fetch(
-    `${API_URL}/${noteId}`,
+   `${API_URL}/api/notes/${noteId}`,
     {
       method: "DELETE",
       headers: {
